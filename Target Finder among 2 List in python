@@ -1,0 +1,28 @@
+def tarFinder(A,B, Tar):
+    A.sort()
+    B.sort()
+    R = [[0 for i in range(len(B))] for i in range(len(A))]
+    for i in range(len(A)):
+        for j in range(len(B)):
+            R[i][j] = A[i] + B[j]
+    i = 0
+    j = 3
+    Min = 9999999
+    while i != 3 and j != 0:
+        if R[i][j] < Tar:
+            if abs(Tar - R[i][j]) < Min:
+                Min = R[i][j]
+                C = str(A[i])+"|"+str(B[j])
+            i += 1
+        else:
+            if abs(Tar - R[i][j]) < Min:
+                Min = R[i][j]
+                C = str(A[i])+"|"+str(B[j])
+            j -= 1
+    return C
+
+A = [1, 4, 7, 10]
+B = [4, 5, 7, 8]
+print(tarFinder(A,B,13))
+
+
